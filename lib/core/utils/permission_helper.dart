@@ -11,6 +11,21 @@ class PermissionHelper {
     return status.isGranted;
   }
 
+  static Future<bool> requestNotificationPermission() async {
+    final status = await Permission.notification.request();
+    return status.isGranted;
+  }
+
+  static Future<bool> requestLocationPermission() async {
+    final status = await Permission.location.request();
+    return status.isGranted;
+  }
+
+  static Future<bool> requestMicrophonePermission() async {
+    final status = await Permission.microphone.request();
+    return status.isGranted;
+  }
+
   static Future<bool> checkPermission(Permission permission) async {
     return await permission.status.isGranted;
   }

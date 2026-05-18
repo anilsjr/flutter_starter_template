@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:toastification/toastification.dart';
 
 class SnackbarUtils {
   static void showSnackbar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        behavior: SnackBarBehavior.floating,
-      ),
+    toastification.show(
+      context: context,
+      title: Text(message),
+      autoCloseDuration: const Duration(seconds: 4),
+      type: ToastificationType.success,
+      style: ToastificationStyle.flatColored,
     );
   }
 
   static void showErrorSnackbar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        backgroundColor: Colors.red,
-        behavior: SnackBarBehavior.floating,
-      ),
+    toastification.show(
+      context: context,
+      title: Text(message),
+      autoCloseDuration: const Duration(seconds: 4),
+      type: ToastificationType.error,
+      style: ToastificationStyle.flatColored,
     );
   }
 }
