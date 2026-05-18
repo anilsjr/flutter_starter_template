@@ -12,6 +12,9 @@ import 'config/theme/theme_provider.dart';
 import 'config/language/language_provider.dart';
 import 'core/services/storage_service.dart';
 
+import 'core/services/app_lifecycle_reactor.dart';
+import 'core/services/ad_service.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -21,6 +24,13 @@ void main() async {
   // Initialize Mobile Ads (Mobile only)
   if (!kIsWeb) {
     await MobileAds.instance.initialize();
+    
+    // Load App Open Ad
+    // Replace with your actual ad unit ID
+    AdService.loadAppOpenAd('ca-app-pub-3940256099942544/3419835294');
+    
+    // Listen for app state changes to show app open ad
+    AppLifecycleReactor().listenToAppStateChanges();
   }
 
   runApp(
