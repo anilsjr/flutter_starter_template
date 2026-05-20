@@ -54,30 +54,32 @@ class MyApp extends ConsumerWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return MaterialApp.router(
-          title: 'Flutter Starter Template',
-          debugShowCheckedModeBanner: false,
-          
-          // Theme
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: themeMode,
+        return ToastificationWrapper(
+          child: MaterialApp.router(
+            title: 'Flutter Starter Template',
+            debugShowCheckedModeBanner: false,
+            
+            // Theme
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: themeMode,
 
-          // Localization
-          locale: locale,
-          localizationsDelegates: [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: const [
-            Locale('en'),
-            Locale('es'),
-          ],
+            // Localization
+            locale: locale,
+            localizationsDelegates: [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [
+              Locale('en'),
+              Locale('es'),
+            ],
 
-          // Routing
-          routerConfig: AppRouter.router,
+            // Routing
+            routerConfig: AppRouter.router,
+          ),
         );
       },
     );
